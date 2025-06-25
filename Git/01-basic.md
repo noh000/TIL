@@ -15,7 +15,7 @@
 2. 파일을 스테이징 영역에 추가
 ---
 `git add .`
-- 현재 디렉토리의 모든 파일을 `add`
+- 현재 디렉토리와 하위 디렉토리의 모든 파일을 `add`
 ---
 `git commit -m "<message>"`
 - **(전제조건)** <u>스테이징된 파일들</u>을 커밋
@@ -23,7 +23,7 @@
 ---
 `git remote add origin <GitHub URL>`
 - 로컬저장소와 원격저장소(origin)를 연결 
-- `orgin` 이 URL에 있는 저장소를 앞으로 origin이라는 이름으로 부를게
+- `origin` 이 URL에 있는 저장소를 앞으로 origin이라는 이름으로 부를게
 ---
 `git push <원격저장소> <브랜치>`   
 `git push origin main`
