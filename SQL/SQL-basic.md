@@ -1,6 +1,6 @@
-||Create|Read|Update|Delete|
+||DB|Tabel|Column|Data|
 |---|---|---|---|---|
-|DB|||||
-|Table|||||
-|Column|||||
-|Data|||||
+|Create|CREATE DATABASE|CREATE TABLE t.name (...)|ALTER TABLE t.name ADD COLUMN|INSERT INTO t.name (...) VALUES (...)|
+|Read|SHOW DATABASES|SELECT * FROM t.name|SELECT c.name FROM t.name|SELECT c.name FROM t.name WHERE|
+|Update|||ALTER TABLE t.name MODIFY COLUMN or CHANGE COLUMN|UPDATE t.name SET WHERE|
+Delete|DROP DATABASE|DROP TABLE|ALTER TABLE t.name DROP COLUMN|DELETE FROM t.name WHERE|

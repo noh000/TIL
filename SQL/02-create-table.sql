@@ -6,7 +6,7 @@ CREATE TABLE sample (
     age INT
 );
 
-SHOW TABLES;
+SHOW TABLES;  -- 테이블 목록
 
 -- 테이블 삭제
 DROP TABLE sample;
