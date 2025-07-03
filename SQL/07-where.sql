@@ -31,9 +31,9 @@ SELECT * FROM students WHERE id!=1;  -- 여집합 (해당 조건 아닌)
 
 SELECT * FROM students WHERE age BETWEEN 19 AND 36;  -- 19 이상, 36 이하
 
-SELECT * FROM students WHERE id IN (1, 3, 5, 7);  -- 하나 이상 일치하는(OR)
+SELECT * FROM students WHERE id IN (1, 3, 5, 7);  -- 값의 리스트(list of valuses), 이 중 하나만 맞아도 OK
 
--- 부분 일치 LIKE
+-- 문자열 부분 일치 LIKE
 SELECT * FROM students WHERE name LIKE '김%';  -- '김'으로 시작하는 name 찾기 (뒤에 글자수 상관X)
 SELECT * FROM students WHERE name LIKE '%연'; -- '연'로 끝나는 name 찾기 (앞에 글자수 상관X)
 SELECT * FROM students WHERE name LIKE '%보%'; -- '보'가 들어가는 name 찾기 (앞뒤 글자수 상관X, 맨앞뒤도 OK)
