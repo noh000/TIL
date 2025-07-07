@@ -13,10 +13,11 @@ WHERE total_amount>=(SELECT AVG(total_amount) FROM sales);
 -- 2. (WHERE) 다른 테이블 기준으로 필터링할 때 (= 스칼라, IN 벡터)
 -- 3. (SELECT) 연산 결과 붙일 때
 
+-- 평균금액보다 더 높은 주문
 SELECT
   product_name,
   total_amount,
-  total_amount - (SELECT AVG(total_amount) FROM sales)  -- 경우 1번, 서브쿼리를 써야 값이 고정됨
+  total_amount - (SELECT AVG(total_amount) FROM sales) AS 평균과의차이  -- 경우 1번, 서브쿼리를 써야 값이 고정됨
 FROM sales
 WHERE total_amount>=(SELECT AVG(total_amount) FROM sales);
 
