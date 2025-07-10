@@ -30,6 +30,7 @@ ORDER BY 호구번호
 LIMIT 20 OFFSET 40;
 
 -- 주문 날짜가 최신인 순서대로 번호 매기기
+-- 순서 기반 함수 (ROW_NUMBER, RANK, LAG, LEAD) + OVER(ORDERB BY '기준 컬럼')
 SELECT
 	order_id,
 	customer_id,
@@ -91,3 +92,30 @@ WHERE r.순위 <= 3;
 -- CTE
 -- 1. 지역-사람별 "매출 데이터" 생성 [지역, 고객id, 이름, 해당 고객의 총 매출]
 -- 2. "매출데이터" 에 새로운 열(ROW_NUMBER) 추가
+-- 3. 최종 데이터 표시
+
+WITH region_sales AS (
+	SELECT
+		o.region AS 지역,
+		o.customer_id AS 고객ID,
+		c.customer_name AS 이름,
+		SUM(o.amount) AS 고객별총매출
+	FROM orders o
+	JOIN customers c ON o.customer_id = c.customer_id
+	GROUP BY o.region, o.customer_id, c.customer_name
+),
+ranking AS (
+	SELECT
+		지역,
+		이름,
+		고객별총매출,
+		RANK() OVER(
+			PARTITION BY 지역
+			ORDER BY 고객별총매출 DESC) AS 지역순위
+	FROM region_sales
+	-- 윈도우 함수 결과를 WHERE에서 직접 사용 불가 (최종 데이터 표시에서 사용)
+)
+SELECT
+	지역, 이름, 고객별총매출, 지역순위
+FROM ranking
+WHERE 지역순위 = 1;
