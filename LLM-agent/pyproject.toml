@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "llm-agent"
+version = "0.1.0"
+description = "An AI agent project using LangChain."
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain = ">=0.1.0"
+langchain-openai = ">=0.1.0" # OpenAI 모델을 사용한다면
+python-dotenv = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+ruff = "^0.4.0"
+mypy = "^1.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.main.api"
+
+# 코드 포매터 및 린터 설정
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"] # 기본 규칙 활성화
+
+# 타입 체커 설정
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
